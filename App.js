@@ -8,7 +8,7 @@ import Options from "./components/Options";
 import Generate from "./components/Generate";
 
 export default function App() {
-  const [pwLength, setPwLength] = useState(15);
+  const [pwLength, setPwLength] = useState(16);
   const [capLetters, setCapLetters] = useState(false);
   const [letters, setLetters] = useState(true);
   const [numbers, setNumbers] = useState(true);
@@ -17,15 +17,18 @@ export default function App() {
 
   const genPass = () => {
     if (!capLetters && !letters && !numbers && !symbols) return;
-    return setPass(getRandomPass(pwLength, letters, capLetters, numbers, symbols));
+    return setPass(
+      getRandomPass(pwLength, letters, capLetters, numbers, symbols)
+    );
   };
 
   useEffect(() => {
-    genPass()
-  }, [])
+    genPass();
+  }, []);
 
   return (
-    <View style={styles.container}> 
+    <View style={styles.container}>
+      <Text style={styles.header}>Password Generator</Text>
       <Output output={pass} />
       <Length pwLength={pwLength} setPwLength={setPwLength} />
       <Options
@@ -45,6 +48,9 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  header: {
+    fontSize: 20
+  },
   container: {
     flex: 1,
     backgroundColor: "#fff",
