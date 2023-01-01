@@ -1,2 +1,2 @@
 # PWGEN-Native
-pwgen.cz React-Native app
+pwgen.cz React-Native App for iOS
