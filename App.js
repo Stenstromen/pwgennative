@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View} from "react-native";
+import * as Clipboard from 'expo-clipboard';
 import getRandomPass from "./Pwgen";
 import Output from "./components/Output";
 import Length from "./components/Length";
 import Options from "./components/Options";
 import Generate from "./components/Generate";
+import Copy from "./components/Copy";
 
 export default function App() {
   const [pwLength, setPwLength] = useState(16);
@@ -21,6 +23,10 @@ export default function App() {
       getRandomPass(pwLength, letters, capLetters, numbers, symbols)
     );
   };
+
+  const copyPass = async () => {
+    await Clipboard.setStringAsync(pass);
+  }
 
   useEffect(() => {
     genPass();
@@ -42,6 +48,7 @@ export default function App() {
         setSymbols={setSymbols}
       />
       <Generate generatePassword={genPass} />
+      <Copy copyPass={copyPass}/>
       <StatusBar style="auto" />
     </View>
   );

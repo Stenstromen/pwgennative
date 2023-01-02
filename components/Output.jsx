@@ -8,10 +8,7 @@ function Output({ output }) {
     },
     output: {
       borderWidth: 2,
-      borderTopLeftRadius: 20,
-      borderTopRightRadius: 20,
-      borderBottomLeftRadius: 20,
-      borderBottomRightRadius: 20,
+      borderRadius: 20,
       padding: 10,
       width: 320,
       textAlign: "center",
